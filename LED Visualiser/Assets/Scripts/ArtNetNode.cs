@@ -55,6 +55,7 @@ public class ArtNetNode : MonoBehaviour
                     //Debug.Log(data[31]);
                     artNetData.parseArtNetPacket(data);
 					//pushToFixtures( // TODO );
+					printDataHead(3);
                 }
             } catch (Exception err) {
                 Debug.Log(err.ToString());
@@ -62,9 +63,18 @@ public class ArtNetNode : MonoBehaviour
         }
     }
 
-	private void printDataHead(){
-		// TODO print the first few DMX addresses' DMX values.
+	private void printDataHead(int n) {
+		Debug.Log("Printing artnet data");
+		for (int i = 0; i < n; i++) {
+			Debug.Log(artNetData.data[i]);
+		}
 	}
+
+	private void printDataHead() {
+		// TODO print the first few DMX addresses' DMX values.
+		printDataHead(10);
+	}
+
 
     public void plugInFixture(Led fixture){
         attached.Add(fixture);
@@ -75,7 +85,18 @@ public class ArtNetNode : MonoBehaviour
 	}
 
     void pushToFixtures(){
-        // TODO
+		foreach (Led led in attached) {
+			// Hmm, no this won't work, well it will, but slow
+			// Need to iterate through addresses we know are attached
+			// Hmm actually might work, but won't be able to use the other code as tightly
+
+			// plan
+			// get LED.address
+			// addresses will be in range 1-512, but we have stored in array indexed 0-511
+			// so artNetData.data[address-1] = red
+			// artNetData.data[address] = green etc
+			// then call led.setColour(r,g,b)
+		}
     }
 
 }

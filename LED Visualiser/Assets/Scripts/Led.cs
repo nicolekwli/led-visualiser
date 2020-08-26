@@ -23,6 +23,7 @@ public class Led : MonoBehaviour
     {
         rend = gameObject.GetComponent<MeshRenderer>();
         plugIn();
+        address = 1;
     }
 
     // Update is called once per frame
@@ -40,6 +41,14 @@ public class Led : MonoBehaviour
         GameObject node = GameObject.Find("node");
         ArtNetNode a = node.GetComponent<ArtNetNode>(); //script
         a.plugInFixture(this);
+    }
+
+    // @param: red , green and blue values will all be in range ____
+    // TODO: is it ok to give colour ranged 0-255 or would it be better to have 0-1 or something else??
+    public void setColour(int r, int g, int b){
+        // TODO: if statements to catch if r,g,b vals are <0 or >255 and then to print notif and set to respective min/max
+
+        // TODO
     }
 
 
