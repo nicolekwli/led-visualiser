@@ -10,6 +10,7 @@ public class Led : MonoBehaviour
     public int universe { get; set; }// NOTE: irl, universe is set on the artnet node, but we don't need do that...right?
 
     private Renderer rend; 
+    Color col;
 
 
 
@@ -24,6 +25,8 @@ public class Led : MonoBehaviour
         rend = gameObject.GetComponent<MeshRenderer>();
         plugIn();
         address = 1;
+
+        col = new Color(0,0,0);
     }
 
     // Update is called once per frame
@@ -43,12 +46,16 @@ public class Led : MonoBehaviour
         a.plugInFixture(this);
     }
 
-    // @param: red , green and blue values will all be in range ____
-    // TODO: is it ok to give colour ranged 0-255 or would it be better to have 0-1 or something else??
+    // @param: red , green and blue values will all be in range 0,1
     public void setColour(int r, int g, int b){
         // TODO: if statements to catch if r,g,b vals are <0 or >255 and then to print notif and set to respective min/max
+        
 
-        // TODO
+        col.r = r; // TODO: this feels like a really round abuot way of doing this?
+        col.g = g;
+        col.b = b;
+
+        rend.material.SetColor("_EmissionColor", col);
     }
 
 

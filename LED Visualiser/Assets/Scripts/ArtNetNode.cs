@@ -54,8 +54,8 @@ public class ArtNetNode : MonoBehaviour
                 if (data.Length == artNetMaxPacketSize) {
                     //Debug.Log(data[31]);
                     artNetData.parseArtNetPacket(data);
-					//pushToFixtures( // TODO );
-					printDataHead(3);
+					//printDataHead(3);
+					pushToFixtures();
                 }
             } catch (Exception err) {
                 Debug.Log(err.ToString());
@@ -71,7 +71,6 @@ public class ArtNetNode : MonoBehaviour
 	}
 
 	private void printDataHead() {
-		// TODO print the first few DMX addresses' DMX values.
 		printDataHead(10);
 	}
 
@@ -86,16 +85,13 @@ public class ArtNetNode : MonoBehaviour
 
     void pushToFixtures(){
 		foreach (Led led in attached) {
-			// Hmm, no this won't work, well it will, but slow
-			// Need to iterate through addresses we know are attached
-			// Hmm actually might work, but won't be able to use the other code as tightly
+			int r,g,b;
+			
+			r = artNetData.data[led.address -1]/255; // TODO: should use a getter, not directly access variable
+			g = artNetData.data[led.address ]/255;
+			b = artNetData.data[led.address +1 ]/255;
 
-			// plan
-			// get LED.address
-			// addresses will be in range 1-512, but we have stored in array indexed 0-511
-			// so artNetData.data[address-1] = red
-			// artNetData.data[address] = green etc
-			// then call led.setColour(r,g,b)
+			led.setColour(r,g,b);
 		}
     }
 
