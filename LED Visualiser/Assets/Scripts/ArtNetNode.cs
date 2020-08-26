@@ -21,7 +21,8 @@ public class ArtNetNode : MonoBehaviour
     artNetPacket artNetData = new artNetPacket();
     int frameRate = 25;
 
-    // TODO:
+	// Array containg each LED device attached
+    private List<Led> attached = new List<Led>(); //NOTE: I don't know how to use lists<> in C# :p, please correct
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,7 @@ public class ArtNetNode : MonoBehaviour
                 if (data.Length == artNetMaxPacketSize) {
                     //Debug.Log(data[31]);
                     artNetData.parseArtNetPacket(data);
+					//pushToFixtures( // TODO );
                 }
             } catch (Exception err) {
                 Debug.Log(err.ToString());
@@ -60,9 +62,17 @@ public class ArtNetNode : MonoBehaviour
         }
     }
 
-    public void plugInFixture( /* TODO */ ){
-        // TODO
+	private void printDataHead(){
+		// TODO print the first few DMX addresses' DMX values.
+	}
+
+    public void plugInFixture(Led fixture){
+        attached.Add(fixture);
     }
+
+	public void sayHello(){
+		Debug.Log("Hello!");
+	}
 
     void pushToFixtures(){
         // TODO
