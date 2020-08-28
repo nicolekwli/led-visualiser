@@ -10,7 +10,8 @@ public class Led : MonoBehaviour
     public int universe { get; set; }// NOTE: irl, universe is set on the artnet node, but we don't need do that...right?
 
     private Renderer rend; 
-    Color col;
+    Color ledCol;
+    Color receiveCol; // Can't update material colour outside of Update() so trying this
 
 
 
@@ -26,7 +27,8 @@ public class Led : MonoBehaviour
         plugIn();
         address = 1;
 
-        col = new Color(0,0,0);
+        ledCol = new Color(0,0,0);
+        receiveCol = new Color(0,0,0); // I think receiveCol = col would copy the reference to the new colour object?
     }
 
     // Update is called once per frame
@@ -36,7 +38,13 @@ public class Led : MonoBehaviour
         if (Input.GetKeyDown("space")){
             rend.material.SetColor("_EmissionColor", Random.ColorHSV());
         }
-            
+        
+        // I think will work because colours are just vec4s?
+        if (ledCol != receiveCol) {
+            Debug.Log("DMX changed");
+            Debug.Log(receiveCol);
+            setColour(receiveCol);
+        }
         
     }
 
@@ -47,16 +55,22 @@ public class Led : MonoBehaviour
     }
 
     // @param: red , green and blue values will all be in range 0,1
-    public void setColour(int r, int g, int b){
-        // TODO: if statements to catch if r,g,b vals are <0 or >255 and then to print notif and set to respective min/max
-        
+    public void setColour(Color c){
+        receiveCol = c;
+        ledCol = c;
 
-        col.r = r; // TODO: this feels like a really round abuot way of doing this?
-        col.g = g;
-        col.b = b;
-
-        rend.material.SetColor("_EmissionColor", col);
+        rend.material.SetColor("_EmissionColor", ledCol);
     }
 
+    // TODO: Make parameter arbitrary length
+    // NOTE: So the way colour is set is a bit weird. First the fixture receives DMX, it updates receiveCol. When Update realises that there's been a change in colour, it'll call setColour, and then the colour is changed.
+    public void receiveDMX(int data1, int data2, int data3){
+
+        receiveCol.r = (float) data1 / 255;
+        receiveCol.g = (float) data2 / 255;
+        receiveCol.b = (float) data3 / 255;
+
+        
+    }
 
 }

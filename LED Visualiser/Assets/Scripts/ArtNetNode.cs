@@ -85,13 +85,13 @@ public class ArtNetNode : MonoBehaviour
 
     void pushToFixtures(){
 		foreach (Led led in attached) {
-			int r,g,b;
+			int r,g,b; // TODO: make arbitrary number based on number of addresses led needs.
 			
-			r = artNetData.data[led.address -1]/255; // TODO: should use a getter, not directly access variable
-			g = artNetData.data[led.address ]/255;
-			b = artNetData.data[led.address +1 ]/255;
+			r = artNetData.data[led.address -1]; // TODO: should use a getter, not directly access led.address variable
+			g = artNetData.data[led.address ];
+			b = artNetData.data[led.address +1 ];
 
-			led.setColour(r,g,b);
+			led.receiveDMX(r,g,b);
 		}
     }
 
