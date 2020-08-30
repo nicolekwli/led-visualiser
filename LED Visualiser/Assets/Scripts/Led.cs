@@ -5,9 +5,9 @@ using UnityEngine;
 public class Led : MonoBehaviour
 {   
     
-    public string label { get; set; }
-    public int address { get; set; }
-    public int universe { get; set; }// NOTE: irl, universe is set on the artnet node, but we don't need do that...right?
+    public string label;
+    public int address;
+    public int universe;// NOTE: irl, universe is set on the artnet node, but we don't need do that...right?
 
     private Renderer rend; 
     Color ledCol;
@@ -15,17 +15,18 @@ public class Led : MonoBehaviour
 
 
 
-    // Constructor method
-    public Led(){
+    // // Constructor method
+    // public Led(int addr){
+    //     address = addr;
 
-    }
+    // }
 
     // Start is called before the first frame update
     void Start()
     {
         rend = gameObject.GetComponent<MeshRenderer>();
         plugIn();
-        address = 1;
+        Debug.Log(address);
 
         ledCol = new Color(0,0,0);
         receiveCol = new Color(0,0,0); // I think receiveCol = col would copy the reference to the new colour object?
