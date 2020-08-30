@@ -26,7 +26,6 @@ public class Led : MonoBehaviour
     {
         rend = gameObject.GetComponent<MeshRenderer>();
         plugIn();
-        Debug.Log(address);
 
         ledCol = new Color(0,0,0);
         receiveCol = new Color(0,0,0); // I think receiveCol = col would copy the reference to the new colour object?
