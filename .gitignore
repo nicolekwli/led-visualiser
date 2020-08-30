@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# That extra unity project that we won't be touching
+Unity_ArtNet_Demo-master/*
