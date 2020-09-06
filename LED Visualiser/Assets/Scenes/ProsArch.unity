@@ -1215,6 +1215,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1287,6 +1288,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 9.135, y: -180.00002, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47def0b9d1dd5847bdd76c1bc00379b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1108546054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,7 +1916,7 @@ GameObject:
   - component: {fileID: 1350509127}
   - component: {fileID: 1350509126}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ButtonControler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1921,7 +1934,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0bf5312aee4cf44bb054dce230025f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 9250663ed71e546a092ebc22d1621314, type: 2}
+  ledmat: {fileID: 2100000, guid: 9250663ed71e546a092ebc22d1621314, type: 2}
+  stripMat: {fileID: 2100000, guid: 7a9dd8aca0ad2864c91b5622e8488677, type: 2}
   newAddressField: {fileID: 1834447045}
 --- !u!4 &1350509127
 Transform:
@@ -1955,7 +1969,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1410829729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2258,7 +2272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1497409084
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2290,7 +2304,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7a9dd8aca0ad2864c91b5622e8488677, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2600,7 +2614,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1947183293
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2632,7 +2646,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9250663ed71e546a092ebc22d1621314, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
