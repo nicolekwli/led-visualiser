@@ -799,7 +799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &498323232
 Transform:
   m_ObjectHideFlags: 0
@@ -1937,6 +1937,7 @@ MonoBehaviour:
   ledmat: {fileID: 2100000, guid: 9250663ed71e546a092ebc22d1621314, type: 2}
   stripMat: {fileID: 2100000, guid: 7a9dd8aca0ad2864c91b5622e8488677, type: 2}
   newAddressField: {fileID: 1834447045}
+  camera: {fileID: 963194225}
 --- !u!4 &1350509127
 Transform:
   m_ObjectHideFlags: 0
@@ -2267,7 +2268,7 @@ GameObject:
   - component: {fileID: 1497409085}
   - component: {fileID: 1497409084}
   m_Layer: 0
-  m_Name: LEDStrip
+  m_Name: LEDStripTEST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2609,7 +2610,7 @@ GameObject:
   - component: {fileID: 1947183294}
   - component: {fileID: 1947183293}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: CubeTEST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

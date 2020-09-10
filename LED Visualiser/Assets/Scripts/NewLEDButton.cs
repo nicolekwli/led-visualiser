@@ -10,6 +10,7 @@ public class NewLEDButton : MonoBehaviour
     public Material ledmat; 
     public Material stripMat;
     public InputField newAddressField;
+    public GameObject camera;
 
 
     public void newLEDStrip () {
@@ -31,12 +32,12 @@ public class NewLEDButton : MonoBehaviour
         float w = 0.005f;
         Vector3 ledDim = new Vector3(w, 0.01f, w);
         // Must satisfy: stripLen = 30*w + 30*gap, edge = gap/2
-        float gap = 0.045f; // TODO: this should be dependant on numLEDs
+        float gap = 0.045f; // TODO: this should be dependant on numLEDs?
         float edge = 0.0225f;    
+
         // This for loop could very nicely be parrallelised
         for (int i = 0; i < numLEDs; i++){
             leds[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            // TODO: parent all these gameobjects to strip and give each unique identifier (like LED-i)
             leds[i].transform.localScale = ledDim; //  does this assign by val or assign ref? maybe do localScale *= ledDim?
             float x = edge +  i * (gap+w)  -stripLen/2 ;
             leds[i].transform.position = new Vector3(x, 0.001f, 0.0f);
@@ -62,6 +63,13 @@ public class NewLEDButton : MonoBehaviour
             // TODO
             Debug.Log("Text Box Int Parse Failed");
         }
+
+
+        /*** Move strip to be in front of camera ***/
+        // Assumes camera is pointing straight down z-axis as it does at start
+        Vector3 displacement = new Vector3(0.0f,-3.0f,-10.0f); // Is displacement the right word?
+        strip.transform.position = camera.transform.position + displacement;
+
 
 
     }
