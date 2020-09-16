@@ -16,8 +16,12 @@ public class NewLEDButton : MonoBehaviour
     public void newLEDStrip () {
         // int stripLen = 1; // 1m
         int numLEDs = 30;
-        float stripLen = 1.5f; //temp until we set world dimensions
+        float stripLen = 1.5f; // temp until we set world dimensions
         string addrStr = newAddressField.text;
+        if (!(Int32.TryParse(addrStr, out int foo))) {// TODO: not use foo
+            Debug.Log("An address needs to be entered");
+            return;
+        }
 
         GameObject strip = GameObject.CreatePrimitive(PrimitiveType.Cube);
         strip.transform.localScale = new Vector3(stripLen,0.008f,0.025f);
@@ -75,6 +79,7 @@ public class NewLEDButton : MonoBehaviour
     }
 
     public void newLED(){
+        // TOOD: before game object created should test the text string and see if is valid, not test it at end
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.transform.position = new Vector3(10,3,2);
         cube.GetComponent<MeshRenderer>().material = ledmat;
